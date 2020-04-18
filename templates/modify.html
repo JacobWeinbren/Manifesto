@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!--Credit to Daniel Waterfield and Jacob Weinbren-->
+		<title>Manifesto Project: Modify</title>
+		<link rel="stylesheet" href="/static/skeleton.css{{'?u=' + last_updated}}">
+		<link rel="stylesheet" href="/static/main.css{{'?u=' + last_updated}}">
+		<link rel="stylesheet" href="/static/modify.css{{'?u=' + last_updated}}">
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	</head>
+	<div id="controls">
+		<div id="list">
+			<table>
+				<tr>
+					<th>Variable</th>
+					<th>Variable Description</th>
+				</tr>
+				{% for variable in variables %}
+					<tr>
+						<td>{{ variable.0 }}</td>
+						<td>{{ variable.1 }}</td>
+					</tr>
+				{% endfor %}
+			</table>
+		</div>
+		<div id="boxes">
+			<div">
+				<textarea id="output" rows="1" cols="60">URL Goes Here</textarea>
+				<a class="button button-primary" onclick="generate()">Generate</a>
+			</div>
+			<br>
+			<div>
+				<b>X Settings:</b>
+				<textarea id="x" rows="20" cols="40">
+				{{info.0}}
+				</textarea>
+			</div>
+			<div>
+				<b>Y Settings:</b>
+				<textarea id="y"rows="20" cols="40">
+				{{info.1}}
+				</textarea>
+			</div>
+			<div>
+				<b>Z Settings:</b>
+				<textarea id="z"rows="20" cols="40">
+				{{info.2}}
+				</textarea>
+			</div>
+			<div>
+				<b>Description:</b>
+				<textarea id="desc" rows="20" cols="40">
+				{{info.3}}
+				</textarea>
+			</div>
+		</div>
+	</div>
+	<script>
+		function fix(thing) {
+			var ugly = thing.text();
+			var obj = JSON.parse(ugly);
+			var pretty = JSON.stringify(obj, undefined, 4);
+			thing.text(pretty)
+		}
+		fix($('#x'))
+		fix($('#y'))
+		fix($('#z'))
+		fix($('#desc'))
+		function generate() {
+			string = 'EdMiliband.pythonanywhere.com/'
+			+ "?x=" + $('#x').val()
+			+ "&y=" + $('#y').val()
+			+ "&z=" + $('#z').val()
+			+ "&description=" + $('#desc').val();
+			string = string.replace(/\n/g, "").replace(/\s/g, '')
+			$('#output').text(string)
+		}
+		
+	</script>
+</html>

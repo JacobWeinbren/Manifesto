@@ -1,0 +1,31 @@
+table {
+	width: 30vw;
+	float: left;
+}
+
+b {
+	float: left;
+}
+
+a, p, b {
+	margin-left: 10px;
+}
+
+textarea {
+	margin-left: 2vw;
+	min-height: 300px !important;
+}
+
+#output {
+	margin-top: 10px;
+	float: left;
+	min-height: 20px !important;
+}
+
+a {
+	margin-top: 10px;
+}
+
+#boxes div {
+	margin-top: 20px;
+}

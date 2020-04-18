@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<!--Credit to Daniel Waterfield and Jacob Weinbren-->
+		<title>Manifesto Project</title>
+		<link rel="stylesheet" href="/static/skeleton.css{{'?u=' + last_updated}}">
+		<link rel="stylesheet" href="/static/main.css{{'?u=' + last_updated}}">
+		
+		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
+		<script src="/static/sijax/sijax.js"></script>
+		<script src="https://code.highcharts.com/highcharts.js"></script>
+		<script src="https://code.highcharts.com/highcharts-more.js"></script>
+		<script src="https://code.highcharts.com/modules/exporting.js"></script>
+		<script src="https://code.highcharts.com/modules/export-data.js"></script>
+		<script src="/static/b64.js"></script>
+		<script>
+			{{ g.sijax.get_js()|safe }}
+		</script>
+	</head>
+	<body>
+		<!-- columns should be the immediate child of a .row -->
+		<div class="row header">
+			<div class="intro six columns">
+				<b>The Manifesto Project</b>
+				<p>Jacob / Dan - <a href="modify">Modify</a></p>
+			</div>
+			<div id="citation" class="six columns">
+				{% for citation in citations %}
+					<p>{{ citation }}</p>
+				{% endfor %}</div>
+			</div>
+		</div>
+		<div id="container"></div>
+		<p id="year-display"></p>
+		<div class="controls">
+			<select id="countries">
+				{% for country in countries %}
+					<option value={{country | replace(" ", "")}}>{{ country }}</option>
+				{% endfor %}
+			</select>
+			<a class="button button-primary" onclick="count -=1; Sijax.request('getElections', [country, count])" href="#"><</a>
+			<a class="button button-primary" onclick="count +=1; Sijax.request('getElections', [country, count])" href="#">></a>
+			<a class="button button-primary" href="#" onclick="animation=true">play</a>
+			<a class="button button-primary" href="#" onclick="animation=false">pause</a>
+		</div>
+		<script src="/static/main.js{{'?u=' + last_updated}}"></script>
+	</body>
+</html>

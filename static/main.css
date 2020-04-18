@@ -1,0 +1,57 @@
+#citation {
+	font-size: 10px;
+	color:grey;
+	margin-left: 0;
+	text-align: right;
+}
+
+@media only screen and (max-width: 549px) {
+	#citation {
+		text-align: left;
+		margin-left: 5px;
+	}
+}
+
+body {
+	margin: 0;
+}
+
+.intro {
+	font-size: 20px;
+	margin-left: 20px !important;
+}
+
+.header {
+	background: #F1F1F1;
+	margin-bottom: 5px;
+	border-bottom: 1px solid #E1E1E1;
+}
+
+select, h4, h5, h6, footer, p{
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+.controls {
+	text-align: center;
+}
+
+#year-display {
+	text-align: center;
+}
+
+#container {
+    height: 75vh;
+    width: 70vw;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+}
+
+.button {
+	color: black !important;
+}
+
+.controls a, .controls div, .controls p, .controls select {
+	margin-bottom: 10px;
+}
